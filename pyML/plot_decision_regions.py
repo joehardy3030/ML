@@ -29,6 +29,6 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
     # highlight test samples
     if test_idx: 
         X_test, y_test = X[test_idx, :], y[test_idx]
-        plt.scatter(X_test[:, 0], X_test[:, 1], c='',
-                    alpha=1.0, linewidths=1, marker='o',
+        plt.scatter(X_test[:, 0], X_test[:, 1], c='black',
+                    alpha=.25, linewidths=1, marker='o',
                     s=55, label='test set')
