@@ -1,6 +1,8 @@
 import numpy as np
+import pandas as pd
 from sklearn import datasets
-from sklearn.cross_validation import train_test_split
+#from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 def iris_data_for_training():
@@ -23,3 +25,22 @@ def xor_data():
     y_xor = np.logical_xor(X_xor[:, 0] > 0, X_xor[:, 1] > 0)
     y_xor = np.where(y_xor, 1, -1) #True gets 1, False gets -1 
     return (X_xor, y_xor)
+
+def wine_data():
+    df_wine = pd.read_csv('http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data', header=None)
+    df_wine.columns = ['Class label', 'Alcohol',
+                       'Malic acid', 'Ash',
+                       'Alcalinity of ash', 'Magnesium',
+                       'Total phenols', 'Flavinoids',
+                       'Nonflavinoid phenols',
+                       'Proanthocyanins',
+                       'Color intensity', 'Hue',
+                       'OD280/OD315 of diluted wines',
+                       'Proline']
+    print('Class labels', np.unique(df_wine['Class label']))
+    return df_wine
+
+def bc_data():
+    df_bc =  pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data',
+                         header=None)
+    return df_bc
